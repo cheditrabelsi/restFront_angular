@@ -1,0 +1,332 @@
+<!-- Table Section -->
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <!-- Card -->
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700" id="listeProduit">
+          <!-- Header -->
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+            <div>
+              <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Liste Produits
+              </h2>
+            
+            </div>
+
+            <div>
+              <div class="inline-flex gap-x-2">
+                <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" (click)="scrollToSection('produit')">
+                  <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                  Add Produit
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End Header -->
+
+          <!-- Table -->
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-slate-900">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      Id
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      designtion
+                    </span>
+                  </div>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      quantite
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      prix
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      id_category
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      image
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-end"></th>
+              </tr>
+            </thead>
+            @for (item of products; track $index) {
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">{{item.id_produit}}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">{{item.designation}}</span>
+                  </div>
+                </td>
+                
+                
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">{{item.qte}}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">{{item.prix}}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">{{item.categorie.id_categorie}}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400"><img src="assets/image/{{ item?.url ? getLastPartOfPath(item.url) : '' }}" class="img-fluid" alt=""></span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-1.5">
+                    <div class="hs-dropdown relative inline-block [--placement:bottom-right]">
+                      <button id="hs-table-dropdown-1" type="button" class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                        <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                      </button>
+                      <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2 mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700" aria-labelledby="hs-table-dropdown-1">
+                        <div class="py-2 first:pt-0 last:pb-0">
+                          
+                          
+                          <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" (click)="onEdit(item.id_produit,'produit')">
+                            update Product
+                          </a>
+                        </div>
+                        <div class="py-2 first:pt-0 last:pb-0">
+                          <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700" (click)="onDelete(item.id_produit)" >
+                            Delete
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          }
+          </table>
+          <!-- End Table -->
+
+          <!-- Footer -->
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+            <div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <span class="font-semibold text-gray-800 dark:text-gray-200">{{categories.length}}</span> results
+              </p>
+            </div>
+
+            <div>
+              <div class="inline-flex gap-x-2">
+                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                  Prev
+                </button>
+
+                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  Next
+                  <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End Footer -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Card -->
+</div>
+<!-- End Table Section -->
+<!------------------------------------------------------------------------------------------------->
+<!-- Card Section -->
+<div class="max-w-2xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto" id="produit">
+  <!-- Card -->
+  <div
+        class="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-gray-700"
+      >
+        <h2 class="mb-8 text-xl font-semibold text-gray-800 dark:text-gray-200">
+          @if (editMode) { Edit Product }@else { Add Product }
+        </h2>
+
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <div class="grid gap-4 lg:gap-6">
+            <!-- Grid -->
+            <div class="grid grid-cols-1 gap-4 lg:gap-6">
+              <div>
+                <label
+                  for="hs-firstname-contacts-1"
+                  class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                  >Designation</label
+                >
+                <input
+                  type="text"
+                  name="hs-firstname-contacts-1"
+                  formControlName="lib"
+                  id="hs-firstname-contacts-1"
+                  class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="hs-lastname-contacts-1"
+                  class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                  >Category</label
+                >
+                <select
+                  title="categories "
+                  formControlName="categories"
+                  class="rounded-full py-3 px-4 pe-9 block w-full border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                >
+                  <option value="" selected>Please select a category</option>
+                  @for (item of categories; track $index) {
+                  <option [value]="item.id_categorie">
+                    {{ item.designationCat }}
+                  </option>
+                  }
+                </select>
+              </div>
+            </div>
+            <div>
+              <label
+                for="hs-firstname-contacts-1"
+                class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                >image</label
+              >
+              <input
+                type="file"
+                name="hs-firstname-contacts-1"
+                formControlName="url"
+                id="hs-firstname-contacts-1"
+                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+              />
+            </div>
+            <!-- End Grid -->
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 gap-4 lg:gap-6">
+              <div>
+                <label
+                  for="hs-input-with-leading-and-trailing-icon"
+                  class="block text-sm font-medium mb-2 dark:text-white"
+                  >Price</label
+                >
+                <!-- Input Number -->
+                <div>
+                  <div class="relative">
+                    <input
+                      type="number"
+                      formControlName="prix"
+                      id="hs-input-with-leading-and-trailing-icon"
+                      name="hs-input-with-leading-and-trailing-icon"
+                      class="py-3 px-4 ps-9 pe-16 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      placeholder="0.00"
+                    />
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+                    >
+                      <span class="text-gray-500">$</span>
+                    </div>
+                    <div
+                      class="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4"
+                    >
+                      <span class="text-gray-500">USD</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input Number -->
+              </div>
+
+              <div>
+                <label
+                  for="hs-phone-number-1"
+                  class="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                  >Quantity</label
+                >
+                <!-- Input Number -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg dark:bg-slate-700 dark:border-gray-700"
+                  data-hs-input-number
+                >
+                  <div class="w-full flex justify-between items-center gap-x-1">
+                    <div class="grow py-2 px-3">
+                      <input
+                        class="w-full p-0 bg-transparent border-0 text-gray-800 focus:ring-0 dark:text-white"
+                        type="number"
+                        data-hs-input-number-input
+                        formControlName="qte"
+                      />
+                    </div>
+                    <div
+                      class="flex items-center -gap-y-px divide-x divide-gray-200 border-s border-gray-200 dark:divide-gray-700 dark:border-gray-700"
+                    >
+                      <button
+                        type="button"
+                        class="w-10 h-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium last:rounded-e-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        data-hs-input-number-decrement
+                      (click)="decrementQte()">
+                        <i class="pi pi-minus"></i>
+                      </button>
+                      <button
+                        type="button"
+                        title="quantity"
+                        class="w-10 h-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium last:rounded-e-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        data-hs-input-number-increment
+                      (click)="incrementQte()">
+                        <i class="pi pi-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input Number -->
+              </div>
+            </div>
+            <!-- End Grid -->
+          </div>
+          <!-- End Grid -->
+
+          <div class="mt-6 grid">
+            <button
+              type="submit"
+              [disabled]="!productForm.valid"
+              class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            >
+              @if (editMode) { Edit Product }@else { Add Product }
+            </button>
+          </div>
+        </form>
+  <!-- End Card -->
+</div>
+<!-- End Card Section -->
